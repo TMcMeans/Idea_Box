@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:400,700');
 
 /* Universal styles */
 
@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   margin: 0;
   font-size: 1em;
 }
@@ -80,12 +80,16 @@ h2 {
 }
 
 img {
-  width: 100px;
-  height: 100px;
+  width: 30px;
+  height: 30px;
 }
 
 hr {
   border: 1px solid #d1d3d4;
+}
+
+p {
+  margin-top: 0;
 }
 
 .idea {
@@ -103,11 +107,31 @@ hr {
 
 .idea-card {
   width: 55%;
-  height: 50%;
-  border: 2px solid black;
-  margin: 0 auto;
+  height: 190px;
+  margin: 10px auto 0 auto;
 }
 
+.top-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+.delete {
+  margin-top: 20px;
+}
+
+.bottom-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.upvote, .downvote {
+  margin-right: 10px;
+}
+
+.quality {
+  margin-left: 20px;
+}
 
 
