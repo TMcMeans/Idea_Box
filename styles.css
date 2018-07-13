@@ -9,6 +9,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
+  font-size: 1em;
 }
 
 .container {
@@ -25,11 +26,16 @@ h1 {
   color: #00a79d;
   display: block;
   text-align: center;
+  margin: 40px 0 20px 0;
+  font-size: 3em;
 }
 
 input {
   display: block;
   margin: 0 auto;
+  width: 55%;
+  padding: 10px;
+  font-size: 1em;
 }
 
 input[type=submit] {
@@ -39,6 +45,22 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background: #045e55;
+}
+
+::placeholder {
+  color: #d1d3d4;
+}
+
+.title, .body, .search {
+  border: 2px solid #d1d3d4;
+}
+
+.title, .body, .save {
+  margin-top: 15px;
+}
+
+.search {
+  margin-top: 30px;
 }
 
 .header-color {
@@ -79,6 +101,12 @@ hr {
   height: 40%;
 }
 
+.idea-card {
+  width: 55%;
+  height: 50%;
+  border: 2px solid black;
+  margin: 0 auto;
+}
 
 
 
