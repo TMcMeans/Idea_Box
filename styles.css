@@ -23,6 +23,13 @@ body {
 h1 {
   font-family: 'Roboto Slab', serif;
   color: #00a79d;
+  display: block;
+  text-align: center;
+}
+
+input {
+  display: block;
+  margin: 0 auto;
 }
 
 input[type=submit] {
