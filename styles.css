@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:700');
+
+/* Universal styles */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top portion styles */
+
+h1 {
+  font-family: 'Roboto Slab', serif;
+  color: #00a79d;
+}
+
+input[type=submit] {
+  background: #00a79d;
+  color: #fff;
+}
+
+input[type=submit]:hover {
+  background: #045e55;
+}
+
+.header-color {
+  color: #6d6e71;
+}
+
+.top-portion {
+  width: 100%;
+  height: 300px;
+  background: #e5f3f2;
+}
+
+/* Bottom portion styles */
+
+h2 {
+  color: #6d6e71;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+hr {
+  border: 1px solid #d1d3d4;
+}
+
+.idea {
+  color: #939598;
+}
+
+.quality {
+  color: #6d6e71;
+}
+
+.bottom-portion {
+  width: 100%;
+  height: 40%;
+}
+
+
+
+
+
