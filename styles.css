@@ -59,10 +59,6 @@ input[type=submit]:hover {
   margin-top: 15px;
 }
 
-.search {
-  margin-top: 30px;
-}
-
 .header-color {
   color: #6d6e71;
 }
@@ -71,6 +67,7 @@ input[type=submit]:hover {
   width: 100%;
   height: 300px;
   background: #e5f3f2;
+  position: fixed;
 }
 
 /* Bottom portion styles */
@@ -103,12 +100,14 @@ p {
 .bottom-portion {
   width: 100%;
   height: 40%;
+  margin-top: 320px;
 }
 
 .idea-card {
   width: 55%;
   height: 190px;
   margin: 10px auto 0 auto;
+  overflow: auto;
 }
 
 .top-wrapper {
@@ -132,6 +131,17 @@ p {
 
 .quality {
   margin-left: 20px;
+}
+
+/* Media query */
+
+@media screen and (max-width: 800px) {
+  input {
+    width: 80%;
+  }
+  .idea-card {
+    width: 80%;
+  }
 }
 
 
