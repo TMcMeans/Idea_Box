@@ -2,27 +2,50 @@
 <html>
 <head>
   <title>Idea Box</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <section class="top-portion">
-    <h1>idea<span class="header-color">box</span></h1>
-  <form>
-    <input type="text" name="Idea-Title">
-    <input type="text" name="Idea-Body">
-    <input type="submit" name="Save-Button">
-  </form>
-  </section>
-  <section class="bottom-portion">
-    <input type="search" name="Search-Field">
-    <article class="idea-card">
-      <h2>Example Idea</h2>
-      <img src="">
-      <p>I can make you put your phone down mama out here thinking you out here missin</p>
-      <img src="">
-      <img src="">
-      <p> quality:</p>
-      <hr>
-    </article>
-  </section>
+  <div class="container">
+    <section class="top-portion">
+      <h1>idea<span class="header-color">box</span></h1>
+    <form>
+      <input type="text" class="title" name="Idea-Title" placeholder="Title">
+      <input type="text" class="body" name="Idea-Body" placeholder="Body">
+      <input type="submit" class="save" name="Save-Button" value="save">
+    </form>
+    </section>
+    <section class="bottom-portion">
+     <input type="search" class="search" name="Search-Field" placeholder="Search">
+      <article class="idea-card">
+        <div class="top-wrapper">
+          <h2 class="idea-name">Example Idea 1</h2>
+          <img class="delete" src="assets/delete.svg">
+        </div>
+        <p class="idea">I can make you put your phone down, mama out here thinking you out here missin'.</p>
+        <div class="bottom-wrapper">
+          <img class="upvote" src="assets/upvote.svg">
+          <img class="downvote" src="assets/downvote.svg">
+          <p class="quality"> quality:</p>
+        </div>
+        <hr>
+      </article>
+      <article class="idea-card">
+        <div class="top-wrapper">
+          <h2 class="idea-name">Example Idea 1</h2>
+          <img class="delete" src="assets/delete.svg">
+        </div>
+        <p class="idea">I can make you put your phone down, mama out here thinking you out here missin'.</p>
+        <div class="bottom-wrapper">
+          <img class="upvote" src="assets/upvote.svg">
+          <img class="downvote" src="assets/downvote.svg">
+          <p class="quality"> quality:</p>
+        </div>
+        <hr>
+      </article>
+    </section>
+  </div>
+  <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
