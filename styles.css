@@ -47,6 +47,11 @@ input[type=submit]:hover {
   background: #045e55;
 }
 
+input[type=submit]:disabled {
+  background: #00a79d;
+  
+}
+
 ::placeholder {
   color: #d1d3d4;
 }

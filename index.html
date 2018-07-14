@@ -10,10 +10,11 @@
   <div class="container">
     <section class="top-portion">
       <h1>idea<span class="header-color">box</span></h1>
-    <form>
-      <input type="text" class="title" name="Idea-Title" placeholder="Title">
+      <!-- ask somebody about aria label name-->
+    <form aria-label="Enter Ideas here">
+      <input type="text" class="title" name="Idea-Title"  placeholder="Title">
       <input type="text" class="body" name="Idea-Body" placeholder="Body">
-      <input type="submit" class="save" name="Save-Button" value="save">
+      <input type="submit" class="save" name="Save-Button" value="save" disabled>
     </form>
     </section>
     <section class="bottom-portion">
@@ -46,6 +47,7 @@
       </article>
     </section>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
