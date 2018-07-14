@@ -42,7 +42,7 @@ function addIdea() {
   conosle.log('calling the addIdea function');
 }
 
-
+//Add new shit 
 
 
 
