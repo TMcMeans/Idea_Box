@@ -109,7 +109,7 @@ p {
 }
 
 .idea-card {
-  width: 55%;
+  width: 75%;
   height: 190px;
   margin: 10px auto 0 auto;
   overflow: auto;
@@ -145,7 +145,7 @@ p {
     width: 80%;
   }
   .idea-card {
-    width: 80%;
+    width: 90%;
   }
 }
 
