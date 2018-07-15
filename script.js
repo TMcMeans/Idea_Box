@@ -2,30 +2,35 @@
 
 $('.save').on('click', function(e) {
   e.preventDefault();
-  console.log('button clicked!');
-  console.log($('.title').val(), $('.body').val());
   addIdea();
+  $('.title').val("");
+  $('.body').val("");
+  disableBtn();
 });
 
 $('.title, .body').on('keyup', disableBtn);
+
+$('.bottom-portion').on('click', function(e) {
+  e.preventDefault();
+  deleteIdea(e);
+  moveUp(e);
+  moveDown(e);
+});
 
 // Functions
 
  function disableBtn() {
   if ($('.title').val() === "" || $('.body').val() === "") {
     $('.save').prop('disabled', true);
-    console.log('if');
   } else if ($('.title').val() !== "" && $('.body').val() !== "") {
     $('.save').prop('disabled', false);
-    console.log('else');
   }
 };
 
 function addIdea() {
   var ideaTitle = $('.title').val();
   var ideaBody = $('.body').val();
-  var idea = $('.idea-card');
-  idea.html(`<article class="idea-card">
+  $('.bottom-portion').prepend(`<article class="idea-card">
         <div class="top-wrapper">
           <h2 class="idea-name">${ideaTitle}</h2>
           <img class="delete" src="assets/delete.svg">
@@ -38,11 +43,34 @@ function addIdea() {
         </div>
         <hr>
       </article>`);
-  $('.bottom-portion').append(idea);
-  conosle.log('calling the addIdea function');
-}
+};
 
-//Add new shit 
+function deleteIdea(e) {
+  if(e.target.className.toLowerCase('.delete')) {
+    $('.delete').on('click', function() {
+      event.target.parentElement.parentElement.remove();
+    });
+  }
+};
+
+function moveUp(e) {
+  if(e.target.className.toLowerCase('.upvote')) {
+    $('.upvote').on('click', function() {
+      console.log('upvote click');
+      //figure out how to use jquery- tree traversal to move up one sibling
+    });
+  } 
+};
+
+function moveDown(e) {
+  if(e.target.className.toLowerCase('.downvote')) {
+    $('.downvote').on('click', function() {
+      console.log('downvote click');
+      //figure out how to use jquery- tree traversal to move down one sibling
+    });
+  } 
+};
+
 
 
 
