@@ -46,13 +46,13 @@ function addIdea() {
   $('.bottom-portion').append(`<article class="idea-card">
         <div class="top-wrapper">
           <h2 class="idea-name">${ideaTitle.val()}</h2>
-          <img class="delete" src="assets/delete.svg">
+          <button class="delete"></button>
         </div>
         <p class="idea">${ideaBody.val()}</p>
         <div class="bottom-wrapper">
-          <img class="upvote" src="assets/upvote.svg">
-          <img class="downvote" src="assets/downvote.svg">
-          <p class="quality"> quality:</p>
+          <button class="upvote"></button>
+          <button class="downvote"></button>
+          <p class="quality"> quality:</p><p>swill</p>
         </div>
         <hr>
       </article>`);
@@ -89,10 +89,10 @@ function moveDown(e) {
 };
 
 // Local Storage
-strigify save in local Storage
+// strigify save in local Storage
 
 
-retrieve from local storage parse 
+// retrieve from local storage parse 
 
 
 // function addIdea() {

@@ -125,7 +125,7 @@ p {
   width: 55%;
   height: 190px;
   margin: 10px auto 0 auto;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 
 .top-wrapper {
@@ -135,20 +135,45 @@ p {
 }
 
 .delete {
-  margin-top: 20px;
+    width: 4%;
+    height: 30px;
+    background-image: url(assets/delete.svg);
+    margin: 2% 2%;
+    border: none;
+
 }
 
-.bottom-wrapper {
+.delete:hover {
+  background-image: url("assets/delete-hover.svg");
+}
+
+.btn-wrapper {
   display: flex;
-  flex-direction: row;
+  /*flex-direction: row;*/
+  justify-content: center;
 }
 
 .upvote, .downvote {
-  margin-right: 10px;
+  margin: 10px 10px;
+  width: 4%;
+  height: 30px;
+}
+
+.upvote {
+  background-image: url("assets/upvote.svg");
+}
+
+.downvote {
+  background-image: url("assets/downvote.svg");
 }
 
 .quality {
   margin-left: 20px;
+  display: inline;
+}
+
+p {
+  display: inline;
 }
 
 /* Media query */
