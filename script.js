@@ -1,4 +1,8 @@
-// Event Listeners
+
+
+var ideaTitle = $('.title');
+var ideaBody = $('.body');
+// var key
 
 $('.save').on('click', function(e) {
   e.preventDefault();
@@ -7,6 +11,8 @@ $('.save').on('click', function(e) {
   $('.body').val("");
   disableBtn();
 });
+
+// Event Listeners
 
 $('.title, .body').on('keyup', disableBtn);
 
@@ -27,15 +33,22 @@ $('.bottom-portion').on('click', function(e) {
   }
 };
 
+function IdeaCard (title, body, key, quality) {
+  return {
+    title: title,
+    body: body,
+    key: Date.now(),
+    quality: quality || 'swill'
+  }
+}
+
 function addIdea() {
-  var ideaTitle = $('.title').val();
-  var ideaBody = $('.body').val();
-  $('.bottom-portion').prepend(`<article class="idea-card">
+  $('.bottom-portion').append(`<article class="idea-card">
         <div class="top-wrapper">
-          <h2 class="idea-name">${ideaTitle}</h2>
+          <h2 class="idea-name">${ideaTitle.val()}</h2>
           <img class="delete" src="assets/delete.svg">
         </div>
-        <p class="idea">${ideaBody}</p>
+        <p class="idea">${ideaBody.val()}</p>
         <div class="bottom-wrapper">
           <img class="upvote" src="assets/upvote.svg">
           <img class="downvote" src="assets/downvote.svg">
@@ -43,7 +56,10 @@ function addIdea() {
         </div>
         <hr>
       </article>`);
+    var ideaCard = new IdeaCard(ideaTitle.val(), ideaBody.val());
+    console.log(ideaCard);
 };
+
 
 function deleteIdea(e) {
   if(e.target.className.toLowerCase('.delete')) {
@@ -57,6 +73,7 @@ function moveUp(e) {
   if(e.target.className.toLowerCase('.upvote')) {
     $('.upvote').on('click', function() {
       console.log('upvote click');
+      //when this button is clicked it changes
       //figure out how to use jquery- tree traversal to move up one sibling
     });
   } 
@@ -71,8 +88,31 @@ function moveDown(e) {
   } 
 };
 
-//add moar shit
-//add new shit 
+// Local Storage
+strigify save in local Storage
+
+
+retrieve from local storage parse 
+
+
+// function addIdea() {
+//    $('.bottom-portion').prepend(`<article class="idea-card">
+//         <div class="top-wrapper">
+//           <h2 class="idea-name">${ideaTitle}</h2>
+//           <img class="delete" src="assets/delete.svg">
+//         </div>
+//         <p class="idea">${ideaBody}</p>
+//         <div class="bottom-wrapper">
+//           <img class="upvote" src="assets/upvote.svg">
+//           <img class="downvote" src="assets/downvote.svg">
+//           <p class="quality"> quality:</p>
+//         </div>
+//         <hr>
+//       </article>`);
+// };
+
+//  console.log('this');
+// }
 
 
 
