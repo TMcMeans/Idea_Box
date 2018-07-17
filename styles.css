@@ -55,11 +55,15 @@ input[type=submit]:disabled {
   color: #d1d3d4;
 }
 
-.title, .body, .search {
+.title, 
+.body, 
+.search {
   border: 2px solid #d1d3d4;
 }
 
-.title, .body, .save {
+.title, 
+.body, 
+.save {
   margin-top: 15px;
 }
 
