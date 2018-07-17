@@ -46,13 +46,13 @@ function addIdea() {
   $('.bottom-portion').append(`<article class="idea-card">
         <div class="top-wrapper">
           <h2 class="idea-name">${ideaTitle.val()}</h2>
-          <div class="delete"></div>
+          <button class="delete"></button>
         </div>
         <p class="idea">${ideaBody.val()}</p>
         <div class="bottom-wrapper">
-          <img class="upvote" src="assets/upvote.svg">
-          <img class="downvote" src="assets/downvote.svg">
-          <p class="quality"> quality:</p>
+          <button class="upvote"></button>
+          <button class="downvote"></button>
+          <p class="quality"> quality:</p><p>swill</p>
         </div>
         <hr>
       </article>`);
