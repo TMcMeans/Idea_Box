@@ -2,6 +2,7 @@
 
 var ideaTitle = $('.title');
 var ideaBody = $('.body');
+var ideasArray = grabStoredIdeas() || [];
 
 // Event Listeners
 
@@ -32,22 +33,26 @@ $('.bottom-portion').on('click', function(e) {
   }
 };
 
-function IdeaCard (title, body, key, quality) {
+function IdeaCard (title, body, key) {
   return {
     title: title,
     body: body,
     key: Date.now(),
-    quality: quality || 'swill'
+    quality: 'swill'
   }
 }
 
 function addIdea() {
-  $('.bottom-portion').prepend(`<article class="idea-card">
+  var ideaCard = new IdeaCard(ideaTitle.val(), ideaBody.val());
+  var savedTitle = ideaCard.title;
+  var savedBody = ideaCard.body;
+  var savedKey = ideaCard.key; 
+  $('.bottom-portion').prepend(`<article class="idea-card" data-id=${savedKey}>
         <div class="top-wrapper">
-          <h2 class="idea-name">${ideaTitle.val()}</h2>
+          <h2 class="idea-name">${savedTitle}</h2>
           <button class="delete"></button>
         </div>
-        <p class="idea">${ideaBody.val()}</p>
+        <p class="idea">${savedBody}</p>
         <div class="bottom-wrapper">
           <button class="upvote"></button>
           <button class="downvote"></button>
@@ -55,7 +60,6 @@ function addIdea() {
         </div>
         <hr>
       </article>`);
-    var ideaCard = new IdeaCard(ideaTitle.val(), ideaBody.val());
     storeIdea(ideaCard);
 };
 
@@ -63,8 +67,14 @@ function deleteIdea(e) {
   if(e.target.className.toLowerCase('.delete')) {
     $('.delete').on('click', function() {
       event.target.parentElement.parentElement.remove();
-      // localStorage.removeItem();  >>> how to get localStorage to access ideaCard's key? 
-    });
+      var targetedId = e.target.closest('article').dataset.id;
+    //   console.log(ideasArray);
+    //   var filteredIdeas = ideasArray.filter(function(idea) {
+    //     return targetedId !== idea.key;
+    //   });
+    //   console.log(idea.key);
+    // try remove item??
+    // });
   }
 };
 
@@ -90,14 +100,23 @@ function moveDown(e) {
 function storeIdea(ideaCard) { 
   var stringyIdea = JSON.stringify(ideaCard);
   localStorage.setItem(ideaCard.key, stringyIdea);
+  ideasArray.push(ideaCard);
+};
+
+function grabStoredIdeas() {
+  // loop thru local storage
+  for (var i = 0; i < localStorage.length; i++) {
+    ideasArray
+  }
+  //grab from localStorage
+  //parse it 
+  //push to ideas array
 }
 
 function retrieveIdea() {
   for (var i = 0; i < localStorage.length; i++) {
     var parsedIdea = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    console.log(parsedIdea);
-    console.log(parsedIdea.title);
-    $('.bottom-portion').prepend(`<article class="idea-card">
+    $('.bottom-portion').prepend(`<article class="idea-card" data-id=${parsedIdea.key}>
         <div class="top-wrapper">
           <h2 class="idea-name">${parsedIdea.title}</h2>
           <button class="delete"></button>
@@ -114,22 +133,7 @@ function retrieveIdea() {
 }
 
 window.onload = retrieveIdea;
-
-// function addIdea() {
-//    $('.bottom-portion').prepend(`<article class="idea-card">
-//         <div class="top-wrapper">
-//           <h2 class="idea-name">${ideaTitle}</h2>
-//           <img class="delete" src="assets/delete.svg">
-//         </div>
-//         <p class="idea">${ideaBody}</p>
-//         <div class="bottom-wrapper">
-//           <img class="upvote" src="assets/upvote.svg">
-//           <img class="downvote" src="assets/downvote.svg">
-//           <p class="quality"> quality:</p>
-//         </div>
-//         <hr>
-//       </article>`);
-// };
+grabStoredIdeas();
 
 
 
