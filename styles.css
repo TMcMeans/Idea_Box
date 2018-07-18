@@ -154,6 +154,7 @@ p {
 }
 
 .upvote, .downvote {
+  border:none;
   margin: 10px 10px;
   width: 4%;
   height: 30px;
@@ -163,10 +164,17 @@ p {
   background-image: url("assets/upvote.svg");
 }
 
+.upvote:hover {
+  background-image: url("assets/upvote-hover.svg");
+}
+
 .downvote {
   background-image: url("assets/downvote.svg");
 }
 
+.downvote:hover{
+  background-image: url("assets/downvote-hover.svg");
+}
 .quality {
   margin-left: 20px;
   display: inline;
