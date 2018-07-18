@@ -2,7 +2,7 @@
 
 var ideaTitle = $('.title');
 var ideaBody = $('.body');
-var ideasArray = grabStoredIdeas() || [];
+var ideasArray = [];
 
 // Event Listeners
 
@@ -64,19 +64,12 @@ function addIdea() {
 };
 
 function deleteIdea(e) {
-  if(e.target.className.toLowerCase('.delete')) {
-    $('.delete').on('click', function() {
-      event.target.parentElement.parentElement.remove();
-      var targetedId = e.target.closest('article').dataset.id;
-    //   console.log(ideasArray);
-    //   var filteredIdeas = ideasArray.filter(function(idea) {
-    //     return targetedId !== idea.key;
-    //   });
-    //   console.log(idea.key);
-    // try remove item??
-    // });
+  if (e.target.className === 'delete') {
+    var ideaCard = e.target.closest('article');
+    localStorage.removeItem(ideaCard.dataset.id);
+    ideaCard.remove();
   }
-};
+}
 
 function moveUp(e) {
   if(e.target.className.toLowerCase('.upvote')) {
@@ -104,19 +97,19 @@ function storeIdea(ideaCard) {
 };
 
 function grabStoredIdeas() {
-  // loop thru local storage
   for (var i = 0; i < localStorage.length; i++) {
-    ideasArray
+    var grabber = localStorage.getItem(localStorage.key(i));
+    var parsedIdea = JSON.parse(grabber);
+    ideasArray.push(parsedIdea);
   }
-  //grab from localStorage
-  //parse it 
-  //push to ideas array
 }
 
 function retrieveIdea() {
+  var parsedIdea;
   for (var i = 0; i < localStorage.length; i++) {
-    var parsedIdea = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    $('.bottom-portion').prepend(`<article class="idea-card" data-id=${parsedIdea.key}>
+    parsedIdea = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    $('.bottom-portion').prepend(
+      `<article class="idea-card" data-id=${parsedIdea.key}>
         <div class="top-wrapper">
           <h2 class="idea-name">${parsedIdea.title}</h2>
           <button class="delete"></button>
@@ -132,9 +125,7 @@ function retrieveIdea() {
   }
 }
 
-window.onload = retrieveIdea;
+retrieveIdea();
 grabStoredIdeas();
-
-
 
 
