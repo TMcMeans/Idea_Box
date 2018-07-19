@@ -18,8 +18,6 @@ $('.title, .body').on('keyup', disableBtn);
 $('.bottom-portion').on('click', function(e) {
   e.preventDefault();
   deleteIdea(e);
-  moveUp(e);
-  moveDown(e);
 });
 
 // Functions
@@ -32,105 +30,85 @@ $('.bottom-portion').on('click', function(e) {
   }
 };
 
-function IdeaCard (title, body, key, quality) {
-  return {
-    title: title,
-    body: body,
-    key: Date.now(),
-    quality: quality || 'swill'
-  }
+function Idea(title, body, key) {
+  this.title = title;
+  this.body = body;
+  this.key = Date.now();
+  this.quality = 'swill'
 }
 
 function addIdea() {
-  $('.bottom-portion').prepend(`<article class="idea-card">
+  var ideaCard = new Idea(ideaTitle.val(), ideaBody.val());
+  var savedTitle = ideaCard.title;
+  var savedBody = ideaCard.body;
+  var savedKey = ideaCard.key; 
+  $('.bottom-portion').prepend(`<article class="idea-card" data-id=${savedKey}>
         <div class="top-wrapper">
-          <h2 class="idea-name">${ideaTitle.val()}</h2>
+          <h2 class="idea-name" contenteditable="true" onfocusout="updateTitle()">${savedTitle}</h2>
           <button class="delete"></button>
         </div>
-        <p class="idea">${ideaBody.val()}</p>
+        <p class="idea" contenteditable="true" onfocusout="updateBody()">${savedBody}</p>
         <div class="bottom-wrapper">
           <button class="upvote"></button>
           <button class="downvote"></button>
-          <p class="quality"> quality:</p><p></p>
+          <p class="user-quality"> quality: </p><span class="user-quality">swill</span>
         </div>
         <hr>
       </article>`);
-    var ideaCard = new IdeaCard(ideaTitle.val(), ideaBody.val());
     storeIdea(ideaCard);
 };
 
 function deleteIdea(e) {
-  if(e.target.className.toLowerCase('.delete')) {
-    $('.delete').on('click', function() {
-      event.target.parentElement.parentElement.remove();
-      // localStorage.removeItem();  >>> how to get localStorage to access ideaCard's key? 
-    });
+  if (e.target.className === 'delete') {
+    var ideaCard = e.target.closest('article');
+    localStorage.removeItem(ideaCard.dataset.id);
+    ideaCard.remove();
   }
-};
-
-function moveUp(e) {
-  if(e.target.className.toLowerCase('.upvote')) {
-    $('.upvote').on('click', function() {
-      console.log('upvote click');
-      //when this button is clicked it changes quality
-      //figure out how to use jquery- tree traversal to move up one sibling
-    });
-  } 
-};
-
-function moveDown(e) {
-  if(e.target.className.toLowerCase('.downvote')) {
-    $('.downvote').on('click', function() {
-      console.log('downvote click');
-      //figure out how to use jquery- tree traversal to move down one sibling
-    });
-  } 
-};
+}
 
 function storeIdea(ideaCard) { 
   var stringyIdea = JSON.stringify(ideaCard);
   localStorage.setItem(ideaCard.key, stringyIdea);
-}
+};
 
 function retrieveIdea() {
+  var parsedIdea;
   for (var i = 0; i < localStorage.length; i++) {
-    var parsedIdea = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    console.log(parsedIdea);
-    console.log(parsedIdea.title);
-    $('.bottom-portion').prepend(`<article class="idea-card">
+    parsedIdea = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    $('.bottom-portion').prepend(
+      `<article class="idea-card" data-id=${parsedIdea.key}>
         <div class="top-wrapper">
-          <h2 class="idea-name">${parsedIdea.title}</h2>
+          <h2 class="idea-name" onfocusout="updateTitle()" contenteditable="true">${parsedIdea.title}</h2>
           <button class="delete"></button>
         </div>
-        <p class="idea">${parsedIdea.body}</p>
+        <p class="idea" onfocusout="updateBody()" contenteditable="true">${parsedIdea.body}</p>
         <div class="bottom-wrapper">
           <button class="upvote"></button>
           <button class="downvote"></button>
-          <p class="quality"> quality:</p><p></p>
+          <p class="quality"> quality:</p><span class="user-quality"> swill</span>
         </div>
         <hr>
       </article>`);
   }
 }
 
-window.onload = retrieveIdea;
+function updateTitle(e) {
+  var searchingId = event.target.parentNode.parentNode.dataset.id; 
+  console.log(searchingId);
+  for (var i = 0; i < localStorage.length; i++) {
+    var gettingItem = localStorage.getItem(searchingId);
+    var parsedItem = JSON.parse(gettingItem);
+    parsedItem.title = event.target.innerText;
+    localStorage.removeItem(gettingItem);
+    localStorage.setItem(parsedItem.key, JSON.stringify(parsedItem));
+  }
+}
 
-// function addIdea() {
-//    $('.bottom-portion').prepend(`<article class="idea-card">
-//         <div class="top-wrapper">
-//           <h2 class="idea-name">${ideaTitle}</h2>
-//           <img class="delete" src="assets/delete.svg">
-//         </div>
-//         <p class="idea">${ideaBody}</p>
-//         <div class="bottom-wrapper">
-//           <img class="upvote" src="assets/upvote.svg">
-//           <img class="downvote" src="assets/downvote.svg">
-//           <p class="quality"> quality:</p>
-//         </div>
-//         <hr>
-//       </article>`);
-// };
+function updateBody(e) {
+ 
+}
 
+retrieveIdea();
 
 
 

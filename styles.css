@@ -95,6 +95,7 @@ hr {
 
 p {
   margin-top: 0;
+  display: inline;
 }
 
 .search-field {
@@ -181,8 +182,12 @@ p {
   display: inline;
 }
 
-p {
-  display: inline;
+.delete, .upvote, .downvote {
+  margin: 0;
+}
+
+.upvote, .downvote {
+  margin-top: 10px;
 }
 
 /* Media query */
